@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Coin from './Coin';
 import { randomChoice } from './helper';
+import headImg from './head.png';
+import tailImg from './tail.jpeg';
 
 /** Renders CoinContainer component
  * 
@@ -19,7 +21,9 @@ function CoinContainer({ coins }){
   /** Function flips coin when button is clicked */
   function handleFlip(){
     let flip = randomChoice(coins);
+
     setCoin(flip);
+
     if (flip.side === 'head'){
       setNumHeads(numHeads => numHeads + 1);
     } else {
@@ -31,9 +35,13 @@ function CoinContainer({ coins }){
     ? <Coin imgSrc={coin.imgSrc} side={coin.side} />
     : null;
 
+  const title = coin
+    ? <h1>Flip again!</h1>
+    : <h1>Let's flip a coin!</h1>;
+
   return (
     <div className="CoinContainer-container">
-      <h1>Let's currCoin a coin!</h1>
+      {title}
       {currCoin}
       <button onClick={handleFlip} className="currCoin-button">FLIP COIN</button>
       <p>Out of {numHeads+numTails} flips, there have been {numHeads} heads and {numTails} tails.</p>
@@ -45,11 +53,11 @@ CoinContainer.defaultProps = {
   coins: [
     {
       side: "head",
-      imgSrc: "https://upload.wikimedia.org/wikipedia/en/c/c0/Canadian_Dime_-_obverse.png"
+      imgSrc: headImg,
     },
     {
       side: "tail",
-      imgSrc: "https://www.coinsunlimited.ca/image/cache/data/decimal-coins-canada/rolls/2019/2019-canadian-25-cent-caribou-quarter-coin-1-800x800.jpg"
+      imgSrc: tailImg,
     }
   ]
 }

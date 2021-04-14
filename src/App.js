@@ -1,14 +1,14 @@
 import './App.css';
-import CoinFlip from './CoinFlip';
+import CoinContainer from './CoinContainer';
 
 /** App Component
  * 
- *  App -> 
+ *  App -> CoinContainer
  */
 function App() {
   return (
     <div className="App">
-      <CoinFlip />
+      <CoinContainer />
     </div>
   );
 }

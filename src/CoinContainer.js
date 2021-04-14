@@ -39,12 +39,16 @@ function CoinContainer({ coins }){
     ? <h1>Flip again!</h1>
     : <h1>Let's flip a coin!</h1>;
 
+  const countDescription = coin
+    ? <p>Out of {numHeads+numTails} flips, there have been {numHeads} heads and {numTails} tails.</p>
+    : null;
+
   return (
     <div className="CoinContainer-container">
       {title}
       {currCoin}
       <button onClick={handleFlip} className="currCoin-button">FLIP COIN</button>
-      <p>Out of {numHeads+numTails} flips, there have been {numHeads} heads and {numTails} tails.</p>
+      {countDescription}
     </div>
   );
 }
